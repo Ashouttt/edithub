@@ -2,80 +2,173 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: background 0.3s, color 0.3s;
 }
 
 body {
-    background: #000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #111;
     color: white;
-    font-family: 'Segoe UI', sans-serif;
-    overflow-y: scroll;
+    display: flex;
     height: 100vh;
+    overflow: hidden;
 }
 
-.upload-section {
-    text-align: center;
+body.light-mode {
+    background: #f5f5f7;
+    color: #111;
+}
+
+.sidebar {
+    width: 280px;
+    background: #1a1a1a;
     padding: 20px;
-    background: #111;
-    position: sticky;
+    border-right: 1px solid #333;
+    overflow-y: auto;
+    height: 100vh;
+    position: fixed;
+    left: 0;
     top: 0;
-    z-index: 100;
+    z-index: 10;
+}
+
+body.light-mode .sidebar {
+    background: #e0e0e0;
+    color: #111;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 30px;
     border-bottom: 1px solid #333;
+    padding-bottom: 20px;
 }
 
-.upload-section h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #ff0050;
+.avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #00ccff;
+    cursor: pointer;
 }
 
-#videoUpload {
+.menu a {
+    color: #ddd;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin: 8px 0;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    background: #00ccff;
+    color: black;
+}
+
+.menu i {
+    width: 30px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.menu span {
+    margin-left: 10px;
+}
+
+.feed {
+    margin-left: 280px;
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    background: #111;
+}
+
+body.light-mode .feed {
+    background: #f5f5f7;
+}
+
+.upload-section, .upload-box {
+    background: #1a1a1a;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+body.light-mode .upload-section,
+body.light-mode .upload-box {
+    background: white;
+    color: #111;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.upload-section input,
+.upload-section textarea,
+.upload-box input,
+.upload-box textarea {
+    width: 90%;
+    padding: 12px;
     margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #222;
+    color: white;
+    font-size: 16px;
 }
 
-button {
-    background: #ff0050;
-    color: white;
+body.light-mode .upload-section input,
+body.light-mode .upload-section textarea {
+    background: #eee;
+    border-color: #ccc;
+    color: #111;
+}
+
+.upload-section button,
+.upload-box button {
+    background: #00ccff;
+    color: black;
     border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
+    padding: 12px 25px;
+    border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
     transition: 0.3s;
 }
 
-button:hover {
-    background: #e00040;
-    transform: scale(1.05);
-}
-
-.videos-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    min-height: 100vh;
+.upload-section button:hover,
+.upload-box button:hover {
+    background: #00aadd;
 }
 
 .video-card {
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    background: #111;
-    border-radius: 12px;
+    background: #1a1a1a;
+    border-radius: 16px;
     overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    max-width: 520px;
+    margin: 0 auto;
     position: relative;
-    border: 1px solid #333;
+}
+
+body.light-mode .video-card {
+    background: white;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
 .video-card video {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    display: block;
+    border-radius: 16px 16px 0 0;
 }
 
-.no-videos {
-    color: #666;
-    text-align: center;
-    padding: 40px;
-    font-style: italic;
-}
+.mini-profile {
+   
