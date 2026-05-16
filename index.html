@@ -1,19 +1,56 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>EditHub</title>
+    <title>EditHub - Edit Community</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 </head>
 <body>
-    <div class="upload-section">
-        <h1>EditHub 🎬</h1>
-        <input type="file" id="videoUpload" accept="video/*" />
-        <button onclick="uploadVideo()">➕ Dodaj Edit</button>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="profile">
+            <img src="https://via.placeholder.com/70/00ccff/ffffff?text=A" alt="Avatar" class="avatar" id="userAvatar"/>
+            <h3 id="userName">Ashouttt</h3>
+            <p><i class="fas fa-heart"></i> <span id="globalLikes">0</span> Likes • <i class="fas fa-user-plus"></i> <span id="followers">15</span> Followers</p>
+        </div>
+        <ul class="menu">
+            <li><a href="#" onclick="showSection('feed')"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li><a href="#" onclick="showSection('upload')"><i class="fas fa-upload"></i> <span>Upload</span></a></li>
+            <li><a href="#" onclick="showSection('saved')"><i class="fas fa-bookmark"></i> <span>Saved</span></a></li>
+            <li><a href="#" onclick="toggleTheme()"><i class="fas fa-moon"></i> <span>Toggle Theme</span></a></li>
+            <li><a href="#" onclick="alert('Profile settings')"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+        </ul>
     </div>
 
-    <div id="videosContainer" class="videos-container"></div>
+    <!-- Main Feed -->
+    <main class="feed" id="feed">
+        <div class="upload-section" id="uploadBox">
+            <h2>🎥 Upload Your Edit</h2>
+            <input type="file" id="videoFile" accept="video/*" />
+            <input type="text" id="captionInput" placeholder="#fun #epic #edit" />
+            <button onclick="addVideo()">Post Edit</button>
+        </div>
+
+        <div id="videosContainer"></div>
+    </main>
+
+    <!-- Saved Section -->
+    <main class="feed" id="saved" style="display: none;">
+        <h2>🔖 Saved Edits</h2>
+        <div id="savedVideos"></div>
+    </main>
+
+    <!-- Upload Section -->
+    <main class="feed" id="upload" style="display: none;">
+        <h2>📤 Upload New Edit</h2>
+        <div class="upload-box">
+            <input type="file" id="newVideoFile" accept="video/*" />
+            <textarea id="newCaption" placeholder="Write a caption..."></textarea>
+            <button onclick="submitNewVideo()">Upload</button>
+        </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
